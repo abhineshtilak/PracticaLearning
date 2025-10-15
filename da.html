@@ -7,113 +7,36 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/png" href="assets/logo.png" />
   <script src="quizzes/da-quiz.js" defer></script>
+  <script src="quizzes/quiz-script.js" defer></script>
 </head>
 
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800 min-h-screen flex flex-col items-center py-10">
 
+  <!-- Header -->
   <header class="text-center mb-8">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-3">Data Analytics (DA)</h1>
-    <p class="text-gray-600 text-lg">Choose below to download notes or take a quiz</p>
+    <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-3">Data Analytics Quiz 💻</h1>
+    <p class="text-gray-600 text-lg">Enter your name and test your knowledge!</p>
   </header>
 
-  <section class="flex flex-col md:flex-row gap-6 mb-10">
-    <button id="showNotesBtn" class="px-8 py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300">📘 Download Notes</button>
-    <button id="showQuizBtn" class="px-8 py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300">🧠 Take Quiz</button>
+  <!-- Name Input Section -->
+  <section id="nameSection" class="bg-white rounded-2xl shadow-lg p-8 w-[90%] md:w-[50%] text-center">
+    <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Enter Your Name to Start</h2>
+    <input id="studentName" type="text" placeholder="Enter your name" 
+      class="border border-indigo-300 rounded-xl p-3 w-full mb-4 text-center focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+    <button id="startQuizBtn" 
+      class="px-8 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300">
+      🚀 Start Quiz
+    </button>
   </section>
 
-  <section id="notesSection" class="hidden bg-white rounded-2xl shadow-lg p-6 w-[90%] md:w-[60%]">
-    <h2 class="text-2xl font-bold text-indigo-600 mb-4">DA Notes</h2>
-    <ul class="space-y-3 text-blue-600">
-      <li><a href="notes/DA/da-notes1.pdf" download class="hover:underline">📄 DA Notes - Module 1</a></li>
-      <li><a href="notes/DA/da-notes2.pdf" download class="hover:underline">📄 DA Notes - Module 2</a></li>
-    </ul>
-  </section>
-
+  <!-- Quiz Section -->
   <section id="quizSection" class="hidden w-full flex flex-col items-center">
     <div id="quizContainer" class="w-[90%] md:w-[60%]"></div>
     <p id="quizResult" class="mt-4 text-xl font-semibold text-gray-700"></p>
   </section>
 
+  <!-- Back Button -->
   <a href="index.html" class="mt-12 text-indigo-600 hover:underline">← Back to Home</a>
 
-  <script>
-    const showNotesBtn = document.getElementById("showNotesBtn");
-    const showQuizBtn = document.getElementById("showQuizBtn");
-    const notesSection = document.getElementById("notesSection");
-    const quizSection = document.getElementById("quizSection");
-    const quizContainer = document.getElementById("quizContainer");
-    const quizResult = document.getElementById("quizResult");
-
-    let currentQuestion = 0;
-    let score = 0;
-
-    showNotesBtn.addEventListener("click", () => {
-      notesSection.classList.remove("hidden");
-      quizSection.classList.add("hidden");
-    });
-
-    showQuizBtn.addEventListener("click", () => {
-      notesSection.classList.add("hidden");
-      quizSection.classList.remove("hidden");
-      currentQuestion = 0;
-      score = 0;
-      loadQuizCard();
-    });
-
-    function loadQuizCard() {
-      quizContainer.innerHTML = "";
-      quizResult.textContent = "";
-
-      if (currentQuestion >= daQuiz.length) {
-        quizContainer.innerHTML = `<p class="text-xl font-bold">Quiz Completed!</p>`;
-        quizResult.textContent = `You scored ${score} / ${daQuiz.length}`;
-        return;
-      }
-
-      const q = daQuiz[currentQuestion];
-      const card = document.createElement("div");
-      card.classList.add("bg-white", "shadow-lg", "rounded-2xl", "p-6", "mb-6");
-
-      const questionEl = document.createElement("p");
-      questionEl.classList.add("text-xl", "font-semibold", "mb-4");
-      questionEl.textContent = `${currentQuestion + 1}. ${q.question}`;
-      card.appendChild(questionEl);
-
-      q.options.forEach((opt, i) => {
-        const btn = document.createElement("button");
-        btn.classList.add(
-          "block", "w-full", "text-left", "mb-3",
-          "p-3", "border", "rounded-lg", "hover:bg-gray-100",
-          "transition-colors", "duration-200"
-        );
-        btn.textContent = opt;
-
-        btn.addEventListener("click", () => {
-          card.querySelectorAll("button").forEach(b => b.disabled = true);
-
-          if (i === q.answer) {
-            btn.classList.add("bg-green-500", "text-white");
-            score++;
-          } else {
-            btn.classList.add("bg-red-500", "text-white");
-            card.querySelectorAll("button")[q.answer].classList.add("bg-green-500", "text-white");
-          }
-
-          const nextBtn = document.createElement("button");
-          nextBtn.textContent = currentQuestion + 1 < daQuiz.length ? "Next Question" : "Finish Quiz";
-          nextBtn.classList.add("mt-4", "px-6", "py-3", "bg-indigo-600", "text-white", "rounded-xl", "hover:bg-indigo-700", "transition-all", "duration-300");
-          nextBtn.addEventListener("click", () => {
-            currentQuestion++;
-            loadQuizCard();
-          });
-          card.appendChild(nextBtn);
-        });
-
-        card.appendChild(btn);
-      });
-
-      quizContainer.appendChild(card);
-    }
-  </script>
 </body>
 </html>
