@@ -1,103 +1,108 @@
-// Full-Stack Web Development Quiz Questions - 20 Questions
-const fullstackQuiz = [
+// SQL Quiz Questions - 20 Beginner-Level Questions
+const sqlQuiz = [
   {
-    question: "Which tag is used for the main heading in HTML?",
-    options: ["<h1>", "<head>", "<header>", "<title>"],
-    answer: 0
-  },
-  {
-    question: "Which CSS property changes text color?",
-    options: ["font-color", "color", "text-color", "background-color"],
-    answer: 1
-  },
-  {
-    question: "Which attribute specifies the URL of an image in HTML?",
-    options: ["src", "href", "alt", "link"],
-    answer: 0
-  },
-  {
-    question: "What does CSS stand for?",
-    options: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style Syntax", "Coding Style System"],
-    answer: 0
-  },
-  {
-    question: "Which HTML element is used for creating a link?",
-    options: ["<a>", "<link>", "<href>", "<url>"],
-    answer: 0
-  },
-  {
-    question: "Which JavaScript method is used to write content on the web page?",
-    options: ["document.write()", "console.log()", "alert()", "prompt()"],
-    answer: 0
-  },
-  {
-    question: "How do you add a comment in CSS?",
-    options: ["/* comment */", "// comment", "<!-- comment -->", "# comment"],
-    answer: 0
-  },
-  {
-    question: "Which HTML tag is used for a paragraph?",
-    options: ["<p>", "<para>", "<text>", "<paragraph>"],
-    answer: 0
-  },
-  {
-    question: "Which SQL command is used to retrieve data?",
+    question: "Which SQL command is used to retrieve data from a table?",
     options: ["SELECT", "INSERT", "UPDATE", "DELETE"],
     answer: 0
   },
   {
-    question: "Which HTML attribute is used for inline CSS styles?",
-    options: ["style", "class", "id", "css"],
+    question: "Which SQL statement is used to add new records in a table?",
+    options: ["INSERT INTO", "ADD RECORD", "CREATE ROW", "UPDATE"],
     answer: 0
   },
   {
-    question: "Which JavaScript keyword is used to declare a variable?",
-    options: ["var", "let", "const", "All of the above"],
-    answer: 3
+    question: "Which SQL statement modifies existing records in a table?",
+    options: ["MODIFY", "UPDATE", "CHANGE", "ALTER"],
+    answer: 1
+  },
+  {
+    question: "Which SQL command removes records from a table?",
+    options: ["DELETE", "REMOVE", "DROP", "CLEAR"],
+    answer: 0
   },
   {
     question: "Which SQL clause is used to filter records?",
-    options: ["WHERE", "ORDER BY", "GROUP BY", "HAVING"],
+    options: ["WHERE", "FILTER", "ORDER BY", "HAVING"],
     answer: 0
   },
   {
-    question: "Which CSS property is used to change background color?",
-    options: ["background-color", "color", "bgcolor", "bg-color"],
+    question: "Which SQL keyword is used to sort the result set?",
+    options: ["SORT", "ORDER BY", "GROUP BY", "ARRANGE"],
+    answer: 1
+  },
+  {
+    question: "Which SQL clause groups rows that have the same values?",
+    options: ["GROUP BY", "ORDER BY", "WHERE", "DISTINCT"],
     answer: 0
   },
   {
-    question: "Which event occurs when a user clicks on an HTML element in JS?",
-    options: ["onclick", "onmouseover", "onchange", "onload"],
+    question: "Which SQL operator checks whether a value exists in a list?",
+    options: ["IN", "EXISTS", "BETWEEN", "LIKE"],
     answer: 0
   },
   {
-    question: "Which HTML tag defines a table row?",
-    options: ["<tr>", "<td>", "<table>", "<th>"],
+    question: "Which SQL operator checks whether a value does NOT exist in a list?",
+    options: ["NOT IN", "NOT EXISTS", "EXCLUDE", "NO IN"],
     answer: 0
   },
   {
-    question: "Which JavaScript method is used to add an element to the end of an array?",
-    options: ["push()", "pop()", "shift()", "unshift()"],
+    question: "Which SQL function returns the number of rows in a result set?",
+    options: ["COUNT()", "SUM()", "TOTAL()", "ROWS()"],
     answer: 0
   },
   {
-    question: "Which SQL command is used to remove all records from a table?",
-    options: ["DELETE FROM", "DROP TABLE", "TRUNCATE", "REMOVE"],
-    answer: 2
-  },
-  {
-    question: "Which CSS property controls the spacing between lines of text?",
-    options: ["line-height", "letter-spacing", "word-spacing", "text-spacing"],
+    question: "Which SQL clause is used with aggregate functions to filter grouped data?",
+    options: ["HAVING", "WHERE", "GROUP BY", "ORDER BY"],
     answer: 0
   },
   {
-    question: "Which HTML tag is used to create an ordered list?",
-    options: ["<ol>", "<ul>", "<li>", "<list>"],
+    question: "Which SQL statement adds a new column to a table?",
+    options: ["ALTER TABLE ... ADD", "ADD COLUMN", "UPDATE TABLE", "INSERT COLUMN"],
     answer: 0
   },
   {
-    question: "Which JavaScript operator is used for strict equality comparison?",
-    options: ["===", "==", "=", "!=="],
+    question: "Which SQL statement deletes a column from a table?",
+    options: ["ALTER TABLE ... DROP COLUMN", "DELETE COLUMN", "REMOVE COLUMN", "DROP TABLE"],
+    answer: 0
+  },
+  {
+    question: "Which SQL statement deletes a table completely?",
+    options: ["DROP TABLE", "DELETE TABLE", "REMOVE TABLE", "CLEAR TABLE"],
+    answer: 0
+  },
+  {
+    question: "Which SQL statement is used to rename a table?",
+    options: ["ALTER TABLE ... RENAME TO", "RENAME TABLE", "CHANGE TABLE", "UPDATE TABLE"],
+    answer: 0
+  },
+  {
+    question: "What does the CASE WHEN statement do in SQL?",
+    options: [
+      "Performs conditional logic within queries",
+      "Creates a new table",
+      "Sorts data",
+      "Checks primary key constraints"
+    ],
+    answer: 0
+  },
+  {
+    question: "Which join returns all rows when there is a match in either table?",
+    options: ["FULL JOIN", "INNER JOIN", "LEFT JOIN", "RIGHT JOIN"],
+    answer: 0
+  },
+  {
+    question: "Which join returns only the matching rows between two tables?",
+    options: ["INNER JOIN", "LEFT JOIN", "FULL JOIN", "CROSS JOIN"],
+    answer: 0
+  },
+  {
+    question: "Which join returns all rows from the left table, even if there are no matches?",
+    options: ["LEFT JOIN", "RIGHT JOIN", "FULL JOIN", "INNER JOIN"],
+    answer: 0
+  },
+  {
+    question: "Which SQL command permanently deletes all data but keeps the table structure?",
+    options: ["TRUNCATE", "DELETE", "DROP", "CLEAR"],
     answer: 0
   }
 ];
