@@ -1,5 +1,5 @@
 // SQL Quiz Questions - 20 Beginner-Level Questions
-const sqlQuiz = [
+const fullstackQuiz = [
   {
     question: "Which SQL command is used to retrieve data from a table?",
     options: ["SELECT", "INSERT", "UPDATE", "DELETE"],

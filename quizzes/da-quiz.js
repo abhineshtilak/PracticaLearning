@@ -1,103 +1,108 @@
-// Data Analytics Quiz Questions - Statistics & Theory
+// SQL Quiz Questions - 20 Beginner-Level Questions
 const daQuiz = [
   {
-    question: "What is the mean of the data set 2, 4, 6, 8, 10?",
-    options: ["5", "6", "7", "8"],
+    question: "Which SQL command is used to retrieve data from a table?",
+    options: ["SELECT", "INSERT", "UPDATE", "DELETE"],
+    answer: 0
+  },
+  {
+    question: "Which SQL statement is used to add new records in a table?",
+    options: ["INSERT INTO", "ADD RECORD", "CREATE ROW", "UPDATE"],
+    answer: 0
+  },
+  {
+    question: "Which SQL statement modifies existing records in a table?",
+    options: ["MODIFY", "UPDATE", "CHANGE", "ALTER"],
     answer: 1
   },
   {
-    question: "What does SD stand for in statistics?",
-    options: ["Standard Deviation", "Sample Data", "Statistical Difference", "Simple Distribution"],
+    question: "Which SQL command removes records from a table?",
+    options: ["DELETE", "REMOVE", "DROP", "CLEAR"],
     answer: 0
   },
   {
-    question: "Which of these is a measure of central tendency?",
-    options: ["Variance", "Mode", "Skewness", "Kurtosis"],
+    question: "Which SQL clause is used to filter records?",
+    options: ["WHERE", "FILTER", "ORDER BY", "HAVING"],
+    answer: 0
+  },
+  {
+    question: "Which SQL keyword is used to sort the result set?",
+    options: ["SORT", "ORDER BY", "GROUP BY", "ARRANGE"],
     answer: 1
   },
   {
-    question: "The probability of an impossible event is?",
-    options: ["0", "1", "0.5", "Cannot be determined"],
+    question: "Which SQL clause groups rows that have the same values?",
+    options: ["GROUP BY", "ORDER BY", "WHERE", "DISTINCT"],
     answer: 0
   },
   {
-    question: "Which graph is used to show frequency distribution?",
-    options: ["Histogram", "Pie Chart", "Scatter Plot", "Line Graph"],
+    question: "Which SQL operator checks whether a value exists in a list?",
+    options: ["IN", "EXISTS", "BETWEEN", "LIKE"],
     answer: 0
   },
   {
-    question: "A sample is defined as?",
-    options: ["Subset of population", "Entire population", "All possible events", "Random variable"],
+    question: "Which SQL operator checks whether a value does NOT exist in a list?",
+    options: ["NOT IN", "NOT EXISTS", "EXCLUDE", "NO IN"],
     answer: 0
   },
   {
-    question: "Variance measures?",
-    options: ["Spread of data", "Central tendency", "Correlation", "Probability"],
+    question: "Which SQL function returns the number of rows in a result set?",
+    options: ["COUNT()", "SUM()", "TOTAL()", "ROWS()"],
     answer: 0
   },
   {
-    question: "Which type of data can take any value in an interval?",
-    options: ["Continuous", "Discrete", "Categorical", "Ordinal"],
+    question: "Which SQL clause is used with aggregate functions to filter grouped data?",
+    options: ["HAVING", "WHERE", "GROUP BY", "ORDER BY"],
     answer: 0
   },
   {
-    question: "Median is?",
-    options: ["Middle value", "Average", "Most frequent value", "Variance"],
+    question: "Which SQL statement adds a new column to a table?",
+    options: ["ALTER TABLE ... ADD", "ADD COLUMN", "UPDATE TABLE", "INSERT COLUMN"],
     answer: 0
   },
   {
-    question: "Mode is?",
-    options: ["Most frequent value", "Middle value", "Mean", "Range"],
+    question: "Which SQL statement deletes a column from a table?",
+    options: ["ALTER TABLE ... DROP COLUMN", "DELETE COLUMN", "REMOVE COLUMN", "DROP TABLE"],
     answer: 0
   },
   {
-    question: "Which distribution is symmetric and bell-shaped?",
-    options: ["Normal", "Uniform", "Poisson", "Exponential"],
+    question: "Which SQL statement deletes a table completely?",
+    options: ["DROP TABLE", "DELETE TABLE", "REMOVE TABLE", "CLEAR TABLE"],
     answer: 0
   },
   {
-    question: "In hypothesis testing, the null hypothesis represents?",
-    options: ["No effect or difference", "Significant effect", "Sample mean", "Population variance"],
+    question: "Which SQL statement is used to rename a table?",
+    options: ["ALTER TABLE ... RENAME TO", "RENAME TABLE", "CHANGE TABLE", "UPDATE TABLE"],
     answer: 0
   },
   {
-    question: "Which measure shows relationship between two variables?",
-    options: ["Correlation", "Mean", "Variance", "Range"],
+    question: "What does the CASE WHEN statement do in SQL?",
+    options: [
+      "Performs conditional logic within queries",
+      "Creates a new table",
+      "Sorts data",
+      "Checks primary key constraints"
+    ],
     answer: 0
   },
   {
-    question: "Random variable that takes finite values is called?",
-    options: ["Discrete", "Continuous", "Categorical", "Ordinal"],
+    question: "Which join returns all rows when there is a match in either table?",
+    options: ["FULL JOIN", "INNER JOIN", "LEFT JOIN", "RIGHT JOIN"],
     answer: 0
   },
   {
-    question: "What is the sum of probabilities of all outcomes in a sample space?",
-    options: ["1", "0", "0.5", "Depends on sample size"],
+    question: "Which join returns only the matching rows between two tables?",
+    options: ["INNER JOIN", "LEFT JOIN", "FULL JOIN", "CROSS JOIN"],
     answer: 0
   },
   {
-    question: "Interquartile range (IQR) is?",
-    options: ["Q3 - Q1", "Q1 + Q3", "Max - Min", "Variance"],
+    question: "Which join returns all rows from the left table, even if there are no matches?",
+    options: ["LEFT JOIN", "RIGHT JOIN", "FULL JOIN", "INNER JOIN"],
     answer: 0
   },
   {
-    question: "Probability of an event and its complement add up to?",
-    options: ["1", "0", "0.5", "Depends on data"],
-    answer: 0
-  },
-  {
-    question: "Skewness measures?",
-    options: ["Asymmetry of distribution", "Central tendency", "Spread of data", "Correlation"],
-    answer: 0
-  },
-  {
-    question: "Which of these is NOT a measure of dispersion?",
-    options: ["Median", "Range", "Variance", "Standard Deviation"],
-    answer: 0
-  },
-  {
-    question: "The total number of outcomes in an experiment is called?",
-    options: ["Sample space", "Population", "Event", "Random variable"],
+    question: "Which SQL command permanently deletes all data but keeps the table structure?",
+    options: ["TRUNCATE", "DELETE", "DROP", "CLEAR"],
     answer: 0
   }
 ];
