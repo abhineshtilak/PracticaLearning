@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let wrongAnswers = [];
   let studentName = "";
 
+  // Sounds
+  const correctSound = new Audio("sounds/correct.mp3");
+  const wrongSound = new Audio("sounds/wrong.mp3");
+  const resultSound = new Audio("sounds/result.mp3");
+
   // Automatically detect which quiz array exists
   const quizSet = window.bpmQuiz || window.daQuiz || window.fswdQuiz || window.basicCompQuiz;
 
@@ -39,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  // Load a single question card
   function loadQuizCard() {
     quizContainer.innerHTML = "";
 
@@ -59,7 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     q.options.forEach((opt, i) => {
       const btn = document.createElement("button");
-      btn.classList.add("block", "w-full", "text-left", "mb-3", "p-3", "border", "rounded-lg", "hover:bg-gray-100", "transition");
+      btn.classList.add(
+        "block", "w-full", "text-left", "mb-3", "p-3", "border", "rounded-lg", "hover:bg-gray-100", "transition"
+      );
       btn.textContent = opt;
 
       btn.addEventListener("click", () => {
@@ -68,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (i === q.answer) {
           btn.classList.add("bg-green-500", "text-white");
           score++;
+          correctSound.play();
         } else {
           btn.classList.add("bg-red-500", "text-white");
           card.querySelectorAll("button")[q.answer].classList.add("bg-green-500", "text-white");
@@ -76,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             correct: q.options[q.answer],
             chosen: q.options[i],
           });
+          wrongSound.play();
         }
 
         const nextBtn = document.createElement("button");
@@ -94,9 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
     quizContainer.appendChild(card);
   }
 
-  // Show final score + feedback
   function showFinalResult() {
     quizContainer.innerHTML = "";
+    resultSound.play();
 
     const percent = Math.round((score / quizSet.length) * 100);
     let feedback = "";
@@ -117,15 +125,13 @@ document.addEventListener("DOMContentLoaded", () => {
       </p>
       <p class="text-xl font-medium text-gray-800 mb-4">${feedback}</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <button id="viewWrongBtn" class="px-5 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition">
-          View Wrong Answers
-        </button>
+        <button id="viewWrongBtn" class="px-5 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition">View Wrong Answers</button>
         <button id="retakeBtn" class="px-5 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Retake Quiz</button>
         <button id="homeBtn" class="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Back to Home</button>
       </div>
     `;
 
-    // WRONG ANSWERS CARD (initially hidden)
+    // WRONG ANSWERS CARD
     const wrongCard = document.createElement("div");
     wrongCard.classList.add("bg-white", "shadow-md", "rounded-2xl", "p-6", "w-full", "animate-fadeIn", "hidden");
 
@@ -160,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quizContainer.appendChild(resultCard);
     quizContainer.appendChild(wrongCard);
 
-    // Handle Buttons
+    // Buttons
     document.getElementById("viewWrongBtn").addEventListener("click", () => {
       wrongCard.classList.toggle("hidden");
     });
