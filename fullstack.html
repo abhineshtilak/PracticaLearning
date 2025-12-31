@@ -28,64 +28,69 @@
   </style>
 </head>
 
-<body class="min-h-screen text-gray-200 flex flex-col items-center py-12">
+<body class="min-h-screen text-gray-200 py-12 overflow-x-hidden">
 
-  <!-- Header -->
-  <header class="text-center mb-12 max-w-3xl">
-    <h1 class="text-4xl md:text-5xl font-semibold text-white mb-4">
-      Full-Stack Web Development
-    </h1>
-    <p class="text-gray-400">
-      Access course materials or initiate knowledge assessment
-    </p>
-  </header>
+  <!-- MAIN WRAPPER (THIS FIXES EVERYTHING) -->
+  <main class="w-full max-w-5xl mx-auto px-4 sm:px-6">
 
-  <!-- Buttons -->
-  <section class="flex gap-6 mb-14">
-    <button
-      onclick="
-        document.getElementById('notesSection').classList.remove('hidden');
-        document.getElementById('nameSection').classList.add('hidden');
-        document.getElementById('quizSection').classList.add('hidden');
-      "
-      class="px-8 py-4 rounded-xl border border-cyan-400/40 text-cyan-300">
-      📘 ACCESS NOTES
-    </button>
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-semibold text-white mb-4">
+        Full-Stack Web Development
+      </h1>
+      <p class="text-gray-400">
+        Access course materials or initiate knowledge assessment
+      </p>
+    </header>
 
-    <button
-      onclick="
-        document.getElementById('notesSection').classList.add('hidden');
-        document.getElementById('nameSection').classList.remove('hidden');
-        document.getElementById('quizSection').classList.add('hidden');
-      "
-      class="px-8 py-4 rounded-xl border border-indigo-400/40 text-indigo-300">
-      🧠 INITIATE QUIZ
-    </button>
-  </section>
+    <!-- Buttons -->
+    <section class="flex flex-col sm:flex-row gap-6 justify-center mb-14">
+      <button
+        onclick="
+          document.getElementById('notesSection').classList.remove('hidden');
+          document.getElementById('nameSection').classList.add('hidden');
+          document.getElementById('quizSection').classList.add('hidden');
+        "
+        class="px-8 py-4 rounded-xl border border-cyan-400/40 text-cyan-300 w-full sm:w-auto">
+        📘 ACCESS NOTES
+      </button>
 
-  <!-- Notes -->
-  <section id="notesSection" class="hidden panel p-8 w-[60%] mb-10">
-    <p>Notes here…</p>
-  </section>
+      <button
+        onclick="
+          document.getElementById('notesSection').classList.add('hidden');
+          document.getElementById('nameSection').classList.remove('hidden');
+          document.getElementById('quizSection').classList.add('hidden');
+        "
+        class="px-8 py-4 rounded-xl border border-indigo-400/40 text-indigo-300 w-full sm:w-auto">
+        🧠 INITIATE QUIZ
+      </button>
+    </section>
 
-  <!-- Name -->
-  <section id="nameSection" class="hidden panel p-8 w-[50%] text-center mb-10">
-    <input
-      id="studentName"
-      class="w-full mb-6 p-3 bg-transparent border border-gray-600 rounded"
-      placeholder="Enter your name"
-    />
-    <button
-      id="startQuizBtn"
-      class="px-8 py-3 border border-cyan-400 text-cyan-300 rounded-xl">
-      🚀 START ASSESSMENT
-    </button>
-  </section>
+    <!-- Notes -->
+    <section id="notesSection" class="hidden panel p-8 w-full max-w-3xl mx-auto mb-10">
+      <p>Notes here…</p>
+    </section>
 
-  <!-- Quiz -->
-  <section id="quizSection" class="hidden w-full flex justify-center">
-    <div id="quizContainer" class="quiz-ui w-[60%]"></div>
-  </section>
+    <!-- Name -->
+    <section id="nameSection" class="hidden panel p-8 w-full max-w-md mx-auto text-center mb-10">
+      <input
+        id="studentName"
+        class="w-full mb-6 p-3 bg-transparent border border-gray-600 rounded"
+        placeholder="Enter your name"
+      />
+      <button
+        id="startQuizBtn"
+        class="w-full px-8 py-3 border border-cyan-400 text-cyan-300 rounded-xl">
+        🚀 START ASSESSMENT
+      </button>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quizSection" class="hidden w-full">
+      <div id="quizContainer" class="quiz-ui w-full max-w-3xl mx-auto"></div>
+    </section>
+
+  </main>
 
 </body>
 </html>

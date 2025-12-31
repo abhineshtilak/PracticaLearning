@@ -1,89 +1,218 @@
 /* ================================
-   FORCE DARK QUIZ THEME (WORKING)
+   FUTURISTIC RESPONSIVE QUIZ UI
+   Mobile-first (SpaceX style)
 ================================ */
 
-/* Reset all injected styles */
+/* Reset injected styles safely */
 .quiz-ui * {
+  box-sizing: border-box;
   background: transparent !important;
   color: #e5e7eb !important;
   border-color: rgba(255,255,255,0.18) !important;
+  font-family: inherit;
 }
 
-/* Main quiz wrapper */
+/* Quiz container layout */
+.quiz-ui {
+  width: 100%;
+  max-width: 720px;              /* desktop limit */
+  margin: 0 auto;
+  padding: 0 16px;               /* mobile side padding */
+}
+
+/* Main quiz card */
 .quiz-ui > div {
-  background: rgba(255,255,255,0.05) !important;
-  border: 1px solid rgba(255,255,255,0.15) !important;
-  border-radius: 18px;
-  padding: 28px;
-  backdrop-filter: blur(16px);
-  box-shadow: 0 0 60px rgba(34,211,238,0.12);
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 20px;
+  padding: 20px;                 /* mobile padding */
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 50px rgba(34,211,238,0.12);
 }
 
-/* Question */
+/* Increase padding on larger screens */
+@media (min-width: 640px) {
+  .quiz-ui > div {
+    padding: 28px;
+  }
+}
+
+/* Question text */
 .quiz-ui h1,
 .quiz-ui h2,
 .quiz-ui h3,
-.quiz-ui h4 {
+.quiz-ui h4,
+.quiz-ui p {
   color: #ffffff !important;
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-size: 1rem;
 }
 
-/* Options (label / div / button — all cases) */
-.quiz-ui label,
+@media (min-width: 640px) {
+  .quiz-ui h1,
+  .quiz-ui h2,
+  .quiz-ui h3,
+  .quiz-ui h4,
+  .quiz-ui p {
+    font-size: 1.125rem;
+  }
+}
+
+/* Options – MOBILE FIRST (BIG TAP TARGETS) */
+.quiz-ui button,
 .quiz-ui .option,
-.quiz-ui button {
+.quiz-ui label {
   display: block;
   width: 100%;
-  padding: 14px 16px;
-  margin-bottom: 14px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04) !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
+  padding: 16px;                 /* finger friendly */
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
   cursor: pointer;
-  transition: all 0.25s ease;
+  text-align: left;
+  transition: background 0.25s ease, border 0.25s ease, transform 0.15s ease;
+  font-size: 0.95rem;
 }
 
-/* Hover */
+/* Desktop refinement */
+@media (min-width: 640px) {
+  .quiz-ui button,
+  .quiz-ui .option,
+  .quiz-ui label {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Hover (desktop only feel) */
+.quiz-ui button:hover,
 .quiz-ui label:hover,
-.quiz-ui .option:hover,
-.quiz-ui button:hover {
-  background: rgba(34,211,238,0.1) !important;
+.quiz-ui .option:hover {
+  background: rgba(34,211,238,0.12) !important;
   border-color: #22d3ee !important;
+  transform: translateY(-1px);
+}
+
+/* Active (mobile tap feedback) */
+.quiz-ui button:active {
+  transform: scale(0.98);
+}
+
+/* Correct / Wrong states */
+.quiz-ui .correct {
+  background: rgba(34,211,238,0.22) !important;
+  border-color: #22d3ee !important;
+}
+
+.quiz-ui .wrong {
+  background: rgba(248,113,113,0.22) !important;
+  border-color: #f87171 !important;
 }
 
 /* Radio / checkbox */
 .quiz-ui input[type="radio"],
 .quiz-ui input[type="checkbox"] {
   accent-color: #22d3ee;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
-/* Correct / wrong */
-.quiz-ui .correct {
-  background: rgba(34,211,238,0.18) !important;
-  border-color: #22d3ee !important;
-}
-
-.quiz-ui .wrong {
-  background: rgba(248,113,113,0.18) !important;
-  border-color: #f87171 !important;
-}
-
-/* Next / Submit */
+/* NEXT / FINISH button */
 .quiz-ui .next-btn,
 .quiz-ui .submit-btn,
 .quiz-ui button[type="submit"] {
   margin-top: 24px;
+  width: 100%;                   /* mobile CTA */
+  padding: 14px 20px;
   border-radius: 999px;
-  padding: 12px 30px;
   border: 1px solid #22d3ee !important;
   color: #22d3ee !important;
   background: transparent !important;
+  font-size: 1rem;
 }
 
-/* Result */
+@media (min-width: 640px) {
+  .quiz-ui .next-btn,
+  .quiz-ui .submit-btn,
+  .quiz-ui button[type="submit"] {
+    width: auto;                 /* desktop compact */
+    padding: 12px 30px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Result text */
 #quizResult {
   color: #22d3ee;
   font-weight: 500;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* Prevent horizontal overflow on mobile */
+body {
+  overflow-x: hidden;
+}
+
+
+/* HARD SAFETY FOR NARROW LAYOUTS */
+#nameSection,
+#quizSection,
+#notesSection {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/* ================================
+   MOBILE OVERFLOW & SHAPE FIX
+================================ */
+
+/* Ensure panels clip children correctly */
+.panel,
+.quiz-ui > div {
+  overflow: hidden;
+}
+
+/* Fix input & button sizing */
+.quiz-ui input,
+.quiz-ui button {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Prevent text & borders from spilling */
+.quiz-ui input {
+  min-width: 0;
+}
+
+/* Improve input appearance inside glass */
+.quiz-ui input {
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.25) !important;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+/* Ensure START button stays inside panel */
+.quiz-ui button#startQuizBtn,
+#startQuizBtn {
+  width: 100%;
+  display: block;
+}
+
+/* Prevent mobile zoom/layout shift */
+input,
+button {
+  font-size: 16px; /* stops iOS zoom */
+}
+
+/* Extra safety for very small screens */
+@media (max-width: 360px) {
+  .quiz-ui > div {
+    padding: 16px;
+  }
 }
