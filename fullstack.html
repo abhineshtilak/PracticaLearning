@@ -3,77 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full-Stack Web Development - Abhinesh Thilak Education</title>
+  <title>FSWD | LurniQ Systems</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/png" href="assets/logo.png" />
+
   <!-- Quiz data -->
-  <script src="quizzes/fullstack-quiz.js" defer></script>
-  <!-- Unified quiz script -->
-  <script src="quizzes/quiz-script.js" defer></script>
+  <script src="quizzes/fullstack-quiz.js"></script>
+
+  <!-- Quiz engine -->
+  <script src="quizzes/quiz-script.js"></script>
+
+  <link rel="stylesheet" href="quiz-dark.css" />
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #05070d, #02040a);
+    }
+    .panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(14px);
+    }
+  </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800 min-h-screen flex flex-col items-center py-10">
+<body class="min-h-screen text-gray-200 flex flex-col items-center py-12">
 
   <!-- Header -->
-  <header class="text-center mb-8">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-3">Full-Stack Web Development (FSWD)</h1>
-    <p class="text-gray-600 text-lg">Download notes or take the quiz</p>
+  <header class="text-center mb-12 max-w-3xl">
+    <h1 class="text-4xl md:text-5xl font-semibold text-white mb-4">
+      Full-Stack Web Development
+    </h1>
+    <p class="text-gray-400">
+      Access course materials or initiate knowledge assessment
+    </p>
   </header>
 
-  <!-- Notes & Quiz toggle buttons -->
-  <section class="flex flex-col md:flex-row gap-6 mb-10">
-    <button id="showNotesBtn" class="px-8 py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300">📘 Download Notes</button>
-    <button id="showQuizBtn" class="px-8 py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300">🧠 Take Quiz</button>
-  </section>
+  <!-- Buttons -->
+  <section class="flex gap-6 mb-14">
+    <button
+      onclick="
+        document.getElementById('notesSection').classList.remove('hidden');
+        document.getElementById('nameSection').classList.add('hidden');
+        document.getElementById('quizSection').classList.add('hidden');
+      "
+      class="px-8 py-4 rounded-xl border border-cyan-400/40 text-cyan-300">
+      📘 ACCESS NOTES
+    </button>
 
-  <!-- Notes Section -->
-  <section id="notesSection" class="hidden bg-white rounded-2xl shadow-lg p-6 w-[90%] md:w-[60%]">
-    <h2 class="text-2xl font-bold text-indigo-600 mb-4">FSWD Notes</h2>
-    <ul class="space-y-3 text-blue-600">
-      <li><a href="notes/FullStack/fswd-notes1.pdf" download class="hover:underline">📄 FSWD Notes - Module 1</a></li>
-      <li><a href="notes/FullStack/fswd-notes2.pdf" download class="hover:underline">📄 FSWD Notes - Module 2</a></li>
-    </ul>
-  </section>
-
-  <!-- Name Input Section for Quiz -->
-  <section id="nameSection" class="hidden bg-white rounded-2xl shadow-lg p-8 w-[90%] md:w-[50%] text-center">
-    <h2 class="text-2xl font-semibold text-indigo-600 mb-4">Enter Your Name to Start the Quiz</h2>
-    <input id="studentName" type="text" placeholder="Enter your name" 
-      class="border border-indigo-300 rounded-xl p-3 w-full mb-4 text-center focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-    <button id="startQuizBtn" 
-      class="px-8 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300">
-      🚀 Start Quiz
+    <button
+      onclick="
+        document.getElementById('notesSection').classList.add('hidden');
+        document.getElementById('nameSection').classList.remove('hidden');
+        document.getElementById('quizSection').classList.add('hidden');
+      "
+      class="px-8 py-4 rounded-xl border border-indigo-400/40 text-indigo-300">
+      🧠 INITIATE QUIZ
     </button>
   </section>
 
-  <!-- Quiz Section -->
-  <section id="quizSection" class="hidden w-full flex flex-col items-center">
-    <div id="quizContainer" class="w-[90%] md:w-[60%]"></div>
-    <p id="quizResult" class="mt-4 text-xl font-semibold text-gray-700"></p>
+  <!-- Notes -->
+  <section id="notesSection" class="hidden panel p-8 w-[60%] mb-10">
+    <p>Notes here…</p>
   </section>
 
-  <!-- Back Button -->
-  <a href="index.html" class="mt-12 text-indigo-600 hover:underline">← Back to Home</a>
+  <!-- Name -->
+  <section id="nameSection" class="hidden panel p-8 w-[50%] text-center mb-10">
+    <input
+      id="studentName"
+      class="w-full mb-6 p-3 bg-transparent border border-gray-600 rounded"
+      placeholder="Enter your name"
+    />
+    <button
+      id="startQuizBtn"
+      class="px-8 py-3 border border-cyan-400 text-cyan-300 rounded-xl">
+      🚀 START ASSESSMENT
+    </button>
+  </section>
 
-  <!-- Notes & Quiz toggle logic -->
-  <script>
-    const showNotesBtn = document.getElementById("showNotesBtn");
-    const showQuizBtn = document.getElementById("showQuizBtn");
-    const notesSection = document.getElementById("notesSection");
-    const nameSection = document.getElementById("nameSection");
-    const quizSection = document.getElementById("quizSection");
+  <!-- Quiz -->
+  <section id="quizSection" class="hidden w-full flex justify-center">
+    <div id="quizContainer" class="quiz-ui w-[60%]"></div>
+  </section>
 
-    showNotesBtn.addEventListener("click", () => {
-      notesSection.classList.remove("hidden");
-      nameSection.classList.add("hidden");
-      quizSection.classList.add("hidden");
-    });
-
-    showQuizBtn.addEventListener("click", () => {
-      notesSection.classList.add("hidden");
-      nameSection.classList.remove("hidden"); // show name input first
-      quizSection.classList.add("hidden");
-    });
-  </script>
 </body>
 </html>

@@ -1,74 +1,44 @@
-// script.js
+/* GSAP animations – SAFE version */
+gsap.fromTo(
+  ".hero-title",
+  { opacity: 0, y: 80 },
+  { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }
+);
 
-// Questions will come from questions.js file
-// (Make sure you load questions.js before this file in HTML)
+gsap.fromTo(
+  ".hero-sub",
+  { opacity: 0, y: 40 },
+  { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power3.out" }
+);
 
-// Elements
-const questionElement = document.getElementById("question");
-const optionsContainer = document.querySelector(".options");
-const nextButton = document.getElementById("next-btn");
+gsap.fromTo(
+  ".batch-cards a",
+  { opacity: 0, y: 50 },
+  {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    stagger: 0.2,
+    delay: 0.6,
+    ease: "power3.out"
+  }
+);
 
-let currentQuestionIndex = 0;
-let score = 0;
-let answered = false;
+/* Futuristic tilt */
+document.querySelectorAll(".glass-card").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width / 2;
+    const y = e.clientY - r.top - r.height / 2;
 
-// Load a question
-function loadQuestion() {
-  answered = false;
-  const currentQuestion = questions[currentQuestionIndex];
-  questionElement.textContent = currentQuestion.question;
-
-  // Clear old options
-  optionsContainer.innerHTML = "";
-
-  // Add new options
-  currentQuestion.options.forEach((option, index) => {
-    const button = document.createElement("button");
-    button.textContent = option;
-    button.classList.add("option");
-    button.addEventListener("click", () => selectAnswer(button, index));
-    optionsContainer.appendChild(button);
-  });
-}
-
-// Handle answer selection
-function selectAnswer(button, index) {
-  if (answered) return;
-  answered = true;
-
-  const currentQuestion = questions[currentQuestionIndex];
-  const optionButtons = optionsContainer.querySelectorAll(".option");
-
-  optionButtons.forEach((btn, i) => {
-    if (i === currentQuestion.correct) {
-      btn.classList.add("correct");
-    } else if (i === index) {
-      btn.classList.add("wrong");
-    }
-    btn.disabled = true;
+    card.style.transform = `
+      rotateX(${ -y / 20 }deg)
+      rotateY(${ x / 20 }deg)
+      scale(1.03)
+    `;
   });
 
-  if (index === currentQuestion.correct) {
-    score++;
-  }
-}
-
-// Next button
-nextButton.addEventListener("click", () => {
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    loadQuestion();
-  } else {
-    quizEnd();
-  }
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "rotateX(0) rotateY(0) scale(1)";
+  });
 });
-
-// End of quiz
-function quizEnd() {
-  questionElement.textContent = `Quiz Completed 🎉 Your Score: ${score}/${questions.length}`;
-  optionsContainer.innerHTML = "";
-  nextButton.style.display = "none";
-}
-
-// Start quiz
-loadQuestion();

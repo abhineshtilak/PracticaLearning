@@ -1,0 +1,89 @@
+/* ================================
+   FORCE DARK QUIZ THEME (WORKING)
+================================ */
+
+/* Reset all injected styles */
+.quiz-ui * {
+  background: transparent !important;
+  color: #e5e7eb !important;
+  border-color: rgba(255,255,255,0.18) !important;
+}
+
+/* Main quiz wrapper */
+.quiz-ui > div {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 18px;
+  padding: 28px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 60px rgba(34,211,238,0.12);
+}
+
+/* Question */
+.quiz-ui h1,
+.quiz-ui h2,
+.quiz-ui h3,
+.quiz-ui h4 {
+  color: #ffffff !important;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* Options (label / div / button — all cases) */
+.quiz-ui label,
+.quiz-ui .option,
+.quiz-ui button {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.quiz-ui label:hover,
+.quiz-ui .option:hover,
+.quiz-ui button:hover {
+  background: rgba(34,211,238,0.1) !important;
+  border-color: #22d3ee !important;
+}
+
+/* Radio / checkbox */
+.quiz-ui input[type="radio"],
+.quiz-ui input[type="checkbox"] {
+  accent-color: #22d3ee;
+  margin-right: 10px;
+}
+
+/* Correct / wrong */
+.quiz-ui .correct {
+  background: rgba(34,211,238,0.18) !important;
+  border-color: #22d3ee !important;
+}
+
+.quiz-ui .wrong {
+  background: rgba(248,113,113,0.18) !important;
+  border-color: #f87171 !important;
+}
+
+/* Next / Submit */
+.quiz-ui .next-btn,
+.quiz-ui .submit-btn,
+.quiz-ui button[type="submit"] {
+  margin-top: 24px;
+  border-radius: 999px;
+  padding: 12px 30px;
+  border: 1px solid #22d3ee !important;
+  color: #22d3ee !important;
+  background: transparent !important;
+}
+
+/* Result */
+#quizResult {
+  color: #22d3ee;
+  font-weight: 500;
+}

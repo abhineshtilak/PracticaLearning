@@ -1,122 +1,149 @@
-/* Reset & base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
+/* Dark futuristic base */
 body {
-  background: linear-gradient(135deg, #222831, #1f1d12d4);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
+  background: radial-gradient(circle at top, #05070d, #02040a);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Main wrapper */
-.quiz-app {
-  width: 80%;
-  max-width: 400px;   /* quiz never grows too big */
+/* Subtle grid overlay */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* Quiz card */
-.quiz-box {
-  background: #e7dddd;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-  text-align: center;
-  animation: fadeIn 0.8s ease;
-  margin-top: 50px;
-  margin-bottom: 30px;
+/* Ambient glow */
+.orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(180px);
+  opacity: 0.25;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.orb-1 {
+  background: #22d3ee;
+  top: -200px;
+  left: -200px;
 }
 
-/* Title */
-.quiz-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #222;
+.orb-2 {
+  background: #6366f1;
+  bottom: -250px;
+  right: -250px;
 }
 
-/* Question */
-#question {
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: #333;
+/* Glass cards – SpaceX style */
+.glass-card {
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  transition: all 0.35s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(34,211,238,0.6);
+  box-shadow: 0 0 40px rgba(34,211,238,0.15);
+}
+
+/* Accent line */
+.accent-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #22d3ee, transparent);
+  transform: translateX(-50%);
+}
+
+
+
+/* ================================
+   FUTURISTIC QUIZ UI OVERRIDES
+================================ */
+
+/* Quiz wrapper */
+.quiz-ui {
+  margin-top: 2rem;
+}
+
+/* Question card */
+.quiz-ui > div {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px);
+  border-radius: 14px;
+  padding: 24px;
+  color: #e5e7eb;
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.08);
+}
+
+/* Question text */
+.quiz-ui h3,
+.quiz-ui h2 {
+  color: #ffffff !important;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 /* Options */
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.quiz-ui button,
+.quiz-ui .option {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #e5e7eb !important;
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: left;
+  transition: all 0.25s ease;
 }
 
-.option {
-  padding: 12px;
-  border: 2px solid #2575fc;
-  border-radius: 10px;
-  background: #f9f9f9;
-  font-size: 16px;
-  cursor: pointer;
+/* Option hover */
+.quiz-ui button:hover {
+  border-color: rgba(34, 211, 238, 0.7) !important;
+  background: rgba(34, 211, 238, 0.08) !important;
+}
+
+/* Correct / wrong states (if your script applies classes) */
+.quiz-ui .correct {
+  border-color: #22d3ee !important;
+  background: rgba(34, 211, 238, 0.15) !important;
+}
+
+.quiz-ui .wrong {
+  border-color: #f87171 !important;
+  background: rgba(248, 113, 113, 0.15) !important;
+}
+
+/* Next button */
+.quiz-ui .next-btn,
+.quiz-ui .submit-btn {
+  margin-top: 20px;
+  background: transparent !important;
+  border: 1px solid #22d3ee !important;
+  color: #22d3ee !important;
+  padding: 12px 28px;
+  border-radius: 999px;
   transition: all 0.3s ease;
 }
 
-.option:hover {
-  background: #e3ecff;
-  transform: scale(1.02);
+.quiz-ui .next-btn:hover,
+.quiz-ui .submit-btn:hover {
+  background: rgba(34, 211, 238, 0.15) !important;
 }
 
-/* Correct & wrong */
-.option.correct {
-  background: #4caf50;
-  color: white;
-  border-color: #4caf50;
-}
-
-.option.wrong {
-  background: #f44336;
-  color: white;
-  border-color: #f44336;
-}
-
-/* Controls */
-.controls {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-#next-btn, #restart-btn {
-  padding: 10px 22px;
-  background: #2575fc;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 15px;
-  transition: background 0.3s, transform 0.2s;
-}
-
-#next-btn:hover, #restart-btn:hover {
-  background: #1a5bcc;
-  transform: translateY(-2px);
-}
-
-/* Footer */
-footer {
-
-  margin-top: 15px;
-  font-size: 8px;
-  text-align: center;
-  color: #fff;
-  opacity: 0.9;
+/* Result text */
+#quizResult {
+  color: #22d3ee;
+  font-weight: 500;
 }
